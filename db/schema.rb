@@ -10,7 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170804183031) do
+ActiveRecord::Schema.define(version: 20170805134714) do
+
+  create_table "events", force: :cascade do |t|
+    t.string "name"
+    t.boolean "cash", default: false
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
+  create_table "offs", force: :cascade do |t|
+    t.datetime "start"
+    t.datetime "end"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_offs_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
@@ -25,6 +45,8 @@ ActiveRecord::Schema.define(version: 20170804183031) do
     t.datetime "activated_at"
     t.string "reset_digest"
     t.datetime "reset_sent_at"
+    t.string "status", default: "normal"
+    t.string "noavailability", default: "any"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Offs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Start</th>
+      <th>End</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @offs.each do |off| %>
+      <tr>
+        <td><%= off.start %></td>
+        <td><%= off.end %></td>
+        <td><%= off.user %></td>
+        <td><%= link_to 'Show', off %></td>
+        <td><%= link_to 'Edit', edit_off_path(off) %></td>
+        <td><%= link_to 'Destroy', off, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Off', new_off_path %>

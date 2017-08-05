@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Start:</strong>
+  <%= @off.start %>
+</p>
+
+<p>
+  <strong>End:</strong>
+  <%= @off.end %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @off.user %>
+</p>
+
+<%= link_to 'Edit', edit_off_path(@off) %> |
+<%= link_to 'Back', offs_path %>
