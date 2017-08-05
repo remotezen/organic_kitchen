@@ -1,0 +1,37 @@
+<h1>Editing Shift Slot</h1>
+<%=week_calendar  events: @events do |date,events| %>
+  <p class="month-day">
+    <%= date.day %>
+   </p>
+  <% events.each do |event| %>
+    <ul>
+      <li class="name-in-list">
+        <%= event.name %>
+      </li>
+      <li>
+          start:
+
+        <%=
+        rTime(event.start_time)
+      %>
+      </li>
+      <li class="last-table-list">
+         end:
+        <%=
+          rTime(event.end_time)
+        %>
+      </li>
+      <li>
+        <%= link_to "delete", event_path(event.id), method: :delete %>
+        <%= link_to "edit", edit_event_path(event.id)%>
+        <%= link_to "new", new_event_path%>
+      </li>
+    </ul>
+    <% end %>
+<% end %>
+
+
+<%= render 'form', event: @event %>
+
+<%= link_to 'Show', @event %> |
+<%= link_to 'Back', events_path %>

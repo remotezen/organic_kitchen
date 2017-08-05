@@ -13,8 +13,12 @@ class User < ApplicationRecord
 
   #/////////////////////////////
   has_secure_password
-  validates :password, presence: true, 
+  validates :password, presence: true,
     length: { minimum: 6 }, allow_nil: true
+
+   scope :normal_user, -> {where(status: 'normal')}
+   scope :off_user, -> {where(status: 'off')}
+   scope :ill_user, -> {where(status: 'sick')}
 
   def password_reset_expired?
     reset_sent_at < 2.hours.ago
@@ -61,6 +65,25 @@ class User < ApplicationRecord
     UserMailer.password_reset(self).deliver_now
     #code
   end
+
+    def self.line
+      where(line: true)
+    end
+    def self.grill
+      where(grill: true)
+    end
+    def self.cashier
+      where(cashier: true)
+    end
+    def self.baking
+      where(baking: true)
+    end
+    def self.coldpress
+      where(coldpress: true)
+    end
+    def self.juice
+      where(juice: true)
+    end
   private
     def downcase_email
       self.email = email.downcase

@@ -12,6 +12,8 @@ gem 'sass-rails',   '5.0.6'
 gem 'uglifier',     '3.2.0'
 gem 'coffee-rails', '4.2.2'
 gem 'jquery-rails', '4.3.1'
+gem 'autoprefixer-rails'
+gem 'jquery-ui-rails'
 gem 'turbolinks',   '5.0.1'
 gem 'jbuilder',     '2.7.0'
 
@@ -42,6 +44,11 @@ group :test do
   gem 'guard-brakeman'
   gem 'guard-rubocop'
   gem 'guard-yield'
+end
+
+group :development, :test do
+  gem 'capybara', '~> 2.13'
+  gem 'selenium-webdriver'
 end
 
 group :production do

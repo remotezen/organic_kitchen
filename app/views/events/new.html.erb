@@ -1,0 +1,76 @@
+<h1>New Event</h1>
+<table class="table table-striped skills" style='line-height:150px' >
+<% @skills.each do |skill| %>
+ <% User.send(skill).normal_user.each do |e| %>
+   <tr>
+     <td>
+       <%= skill %>
+     </td>
+   <td>
+     <%= e.name %> 
+   </td>
+
+   </tr>
+  <% end %>
+  <% end %>
+</table>
+  <table class="table table-striped">
+   <% @users.each do |u| %>
+      <% if u.status == 'sick' %>
+        <tr>
+          <td>
+            <strong>
+              <%= u.status %>
+            </strong>
+            <%= u.name %>
+          </td>
+        </tr>
+      <% elsif u.status == 'off' %>
+        <tr>
+          <td>
+            <strong>
+              <%= u.status %>
+            </strong>
+            <%= u.name %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+  </table>
+    
+
+    
+
+<%=week_calendar  events: @events do |date,events| %>
+  <p class="month-day">
+    <%= date.day %>
+   </p>
+  <% events.each do |event| %>
+    <ul>
+      <li class="name-in-list">
+        <%= event.name %>
+      </li>
+      <li>
+          start:
+
+        <%=
+        rTime(event.start_time)
+      %>
+      </li>
+      <li class="last-table-list">
+         end:
+        <%=
+          rTime(event.end_time)
+        %>
+      </li>
+      <li>
+        <%= link_to "delete", event_path(event.id), method: :delete %>
+        <%= link_to "edit", edit_event_path(event.id)%>
+        <%= link_to "new", new_event_path%>
+      </li>
+    </ul>
+    <% end %>
+    <% end %>
+<%= render 'form', event: @event %>
+
+<%= link_to 'Back', events_path %>

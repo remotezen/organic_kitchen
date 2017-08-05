@@ -10,5 +10,11 @@
 //= require jquery
 //= require rails-ujs
 //= require bootstrap
+//= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
+//= require moment
+//
+jQuery( function($) {
+    $('event.tooltip').tooltip();
+});

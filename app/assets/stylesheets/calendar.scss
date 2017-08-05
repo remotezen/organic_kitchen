@@ -1,0 +1,53 @@
+@import 'colorvars';
+
+@mixin circle {
+  background: #f00;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+@mixin pborder {
+  border: $light-grey 1px solid;
+}
+
+td {
+  .month-day {
+    @include circle;
+    background: $lightest-blue;
+    padding:4px;
+	}
+  
+	ul{
+    list-style:none;
+    text-align:left;
+    border-bottom: 2px solid $lightest-blue;
+    margin-bottom:8px;
+    li{
+      margin:4px;      
+      text-align:center;
+      border-left:1px dotted $light-grey;
+      border-right:1px dotted $light-grey;
+    }
+
+  }
+}
+table, td{
+  text-align:left;
+}
+table, tr{
+  border: solid $light-grey 1px;
+  background:$lightest-green
+}
+.name-in-list{
+  background:#eee;
+  color:#444;
+  font-size:1.1em;
+  font-family:arial;
+}
+.last-table-list{
+  background: #eee;
+}

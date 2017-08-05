@@ -35,6 +35,12 @@ ActiveRecord::Schema.define(version: 20170805134714) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
+    t.boolean "grill", default: false, null: false
+    t.boolean "line", default: false, null: false
+    t.boolean "juice", default: false, null: false
+    t.boolean "cashier", default: false, null: false
+    t.boolean "baking", default: false, null: false
+    t.boolean "coldpress", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
